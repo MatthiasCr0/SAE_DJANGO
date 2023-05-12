@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang='fr'>
+    <head>
+        <head>
+            {% block title %}
+            <title>Computer Management</title>
+            {% endblock %}
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        </head>
+    </head>
+    <body>
+        {% block content %}
+            <h1>Liste des utilisateurs</h1>
+            {% if utilisateurs %}
+            <ul>
+                {% for utilisateur in utilisateurs %}
+                    <li>
+                        {{ utilisateur.id }}</a> ({{utilisateur.nom}})
+                    </li>
+                {%endfor %}
+            </ul>
+            {% else %}
+                <p>Il n\’y a pas de d'utilisateurs.</p>
+            {% endif %}
+
+        <li><a href="{% url 'add-utilisateur' %}">Ajouter un utilisateur</a></li>
+        {% endblock %}
+    </body>
+</html>

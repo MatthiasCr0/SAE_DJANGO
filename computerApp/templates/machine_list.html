@@ -1,0 +1,34 @@
+{% extends "index.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang='fr'>
+    <head>
+        <head>
+            {% block title %}
+            <title>Computer Management</title>
+            {% endblock %}
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        </head>
+    </head>
+    <body>
+        {% block content %}
+            <li><a href="{% url 'add-machine' %}">Ajouter une machine</a></li>
+        
+
+            {% if machines %}
+            <ul>
+                {% for machine in machines %}
+                    <li>
+                        <a href="{% url 'machine-detail' machine.id %}">
+                        {{ machine.id }}</a> ({{machine.nom}})
+                    </li>
+                {%endfor %}
+            </ul>
+            {% else %}
+                <p>Il n\’y a pas de machine.</p>
+            {% endif %}
+        {% endblock %}
+    </body>
+</html>

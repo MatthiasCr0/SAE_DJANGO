@@ -1,0 +1,23 @@
+{% extends "machine_list.html" %}
+{% load static %}
+<!DOCTYPE html>
+<html lang='fr'>
+    <head>
+        <head>
+            {% block title %}
+            <title>Computer Management</title>
+            {% endblock %}
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+    </head>
+    <body>
+        {% block content %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.nom }}
+            <input type="submit" value="Ajouter">
+        </form>
+        {% endblock %}
+    </body>
+</html>

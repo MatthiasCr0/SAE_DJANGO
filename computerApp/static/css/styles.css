@@ -1,0 +1,47 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+.navi{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+}
+
+.pages{
+    display: flex;
+    list-style: none;
+    margin-left: 10%;
+}
+
+ li a{
+    padding: 30px;
+    color: inherit;
+    text-decoration-line: none;
+}
+
+.pages a:hover{
+    color: red;
+
+}
+
+.options{
+    display: flex;
+    list-style: none;
+}
+
+.options li a{
+    padding: 12px;
+    text-decoration-line: none;
+}
+
+.options a:hover{
+    color: red;
+}

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang='fr'>
+    <head>
+        {% block title %}
+        <title>Computer Management</title>
+        {% endblock %}
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    </head>
+    <body>
+        {% block menu %}
+        <header>
+            <nav class="navi">
+                <a class="logo">R&T Development</a></div>
+                <ul class="pages">
+                    <li><a href="{% url 'index' %}">Acceuil</a></li>
+                    <li><a>Visualisation</a></li>
+                    <li><a href="{% url 'utilisateurs' %}">Utilisateurs</a></li>
+                    <li><a href="{% url 'machines' %}">Machines</a></li>
+                </ul>
+                <ul class="options">
+                    <li><a>Langue</a></li>
+                    <li><a>Assistance</a></li>
+                    <li><a>Compte</a></li>
+                    <li><a>Menu</a></li>
+                </ul>
+            </nav>
+        </header>
+        {% endblock %}
+
+
+
+
+        {% block content %}
+        <section>
+            <div class="main">
+                <div class="div_img">
+                    <img src="{% static 'computerApp/images/logo.png' %}" alt="logo" style="width:500px">
+                </div>
+                <div class="desc">  
+                    <h2>
+                        Description de l'entreprise
+                    </h2>
+                </div>
+                <div class="bouton">
+                    <a>
+                        Bouton
+                    </a>
+                </div>
+            </div>
+        </section>
+        {% endblock %}
+    </body>     
+</html>
