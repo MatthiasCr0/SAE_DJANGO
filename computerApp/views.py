@@ -4,6 +4,7 @@ from computerApp.models import Utilisateur
 from django.shortcuts import get_object_or_404, redirect
 from .forms import  AddMachineForm
 from .forms import AddUtilisateurForm
+from django.views.generic import ListView, DetailView
 
 #@login_required
 # Create your views here.

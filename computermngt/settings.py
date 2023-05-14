@@ -39,7 +39,15 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'computerApp.apps.ComputerappConfig',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
+]
 
+TAILWIND_APP_NAME = 'theme'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
 ]
 
 MIDDLEWARE = [
@@ -50,6 +58,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = "computermngt.urls"
@@ -58,7 +67,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": 
-            ['computerApp/'],
+            ['computerApp/templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -66,6 +75,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "theme.context_processors.theme"
             ],
         },
     }
@@ -122,8 +132,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'computerApp/static/'),
-    os.path.join(BASE_DIR, 'static/')
+    os.path.join(BASE_DIR, 'computerApp/static/')
     ]
 
 # Default primary key field type
