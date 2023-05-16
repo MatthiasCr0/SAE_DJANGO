@@ -1,4 +1,5 @@
 from django import forms
+from .models import Machine
 from django.core.exceptions import ValidationError
 
 class AddMachineForm(forms.Form) :
@@ -7,7 +8,7 @@ class AddMachineForm(forms.Form) :
 
     def clean_id(self):
         data = self.cleaned_data["nom"]
-        if len(data) != 6:
+        if len(data) <10 :
             raise ValidationError("Erreur de format pour le champ nom")
         return data
 
@@ -29,4 +30,10 @@ class AddUtilisateurForm(forms.Form) :
         if len(data) == 0:
             raise ValidationError("Erreur de format pour le champ nom")
         return data
-    
+
+
+class DelMachineForm(forms.Form):
+    selected_machine = forms.ModelMultipleChoiceField(
+        queryset=Machine.objects.all(),
+        widget=forms.CheckboxSelectMultiple()
+    )

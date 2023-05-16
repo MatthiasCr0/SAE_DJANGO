@@ -715,3 +715,47 @@ select {
   --tw-text-opacity: 1;
   color: rgb(249 250 251 / var(--tw-text-opacity));
 }
+
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.navi{
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.pages{
+  display: flex;
+  list-style: none;
+  margin-left: 10%;
+}
+
+li a{
+  padding: 30px;
+  color: inherit;
+  text-decoration-line: none;
+}
+
+.pages a:hover{
+  color: rgb(95, 95, 95);
+
+}
+
+.options{
+  display: flex;
+  list-style: none;
+}
+
+.options li a{
+  padding: 12px;
+  text-decoration-line: none;
+}
+
+.options a:hover{
+  color: rgb(95, 95, 95);
+}

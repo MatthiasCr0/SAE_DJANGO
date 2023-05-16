@@ -4,6 +4,10 @@ from computerApp.models import Utilisateur
 from django.shortcuts import get_object_or_404, redirect
 from .forms import  AddMachineForm
 from .forms import AddUtilisateurForm
+from .forms import DelMachineForm
+from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
+
 from django.views.generic import ListView, DetailView
 
 #@login_required
@@ -33,7 +37,7 @@ def machine_add_form(request):
         if form_1.is_valid():
             new_machine = Machine(nom=form_1.cleaned_data['nom'])
             new_machine.save()
-            return redirect('machines')
+        return redirect('machines')
     else:
         form = AddMachineForm()
         context = {'form': form}
@@ -64,7 +68,7 @@ def utilisateur_add_form(request):
                                 id=form_2.cleaned_data['id'],
                                 nom=form_2.cleaned_data['nom'])
             new_utilisateur.save()
-            return redirect('utilisateurs')
+        return redirect('utilisateurs')
     else:
         form = AddUtilisateurForm()
         context = {'form': form}
@@ -72,4 +76,14 @@ def utilisateur_add_form(request):
 
 
 
-
+def machine_del_form(request):
+    if request.method == 'POST':
+        form_2=DelMachineForm(request.POST or None)
+        if form_2.is_valid():
+            selected_machine = form.cleaned_data['selected_machine']
+            Machine.objects.filter(pk__in=selected_machine).delete()
+        return redirect('machines')
+    else:
+        form = DelMachineForm()
+        context = {'form': form}
+        return render(request,'machine_del.html',context)
