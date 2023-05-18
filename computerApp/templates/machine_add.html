@@ -1,8 +1,8 @@
 {% extends "machine_list.html" %}
-    {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        {{ form.nom }}
-        <input type="submit" value="Ajouter">
-    </form>
-    {% endblock %}
+{% block content %}
+<form method="post">
+{% csrf_token %}
+{{ form.nom }}
+<input type="submit" value="Ajouter">
+</form>
+{% endblock %}

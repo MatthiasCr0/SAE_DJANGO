@@ -692,6 +692,10 @@ select {
   position: static;
 }
 
+.absolute {
+  position: absolute;
+}
+
 .block {
   display: block;
 }
@@ -715,7 +719,6 @@ select {
   --tw-text-opacity: 1;
   color: rgb(249 250 251 / var(--tw-text-opacity));
 }
-
 
 *{
   margin: 0;
@@ -742,7 +745,7 @@ li a{
 }
 
 .pages a:hover{
-  color: rgb(95, 95, 95);
+  color: rgb(119, 119, 119);
 
 }
 
@@ -757,5 +760,5 @@ li a{
 }
 
 .options a:hover{
-  color: rgb(95, 95, 95);
+  color: rgb(121, 121, 121);
 }

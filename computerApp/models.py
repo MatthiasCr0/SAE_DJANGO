@@ -10,22 +10,22 @@ class Machine(models.Model):
         ('Serveur', ('Serveur - Simple Server to deploy virtual machines')),
         ('switch', ('Switch - To maintains and connect servers')),
     )
-    id = models.CharField(primary_key=True, editable=False, max_length = 4)
-    nom = models.CharField(max_length = 6, default='None')
-    #maintenanceDate = models.DateField(default = datetime.now())
-    #match= models.CharField(max_length = 32,choices=TYPE,default='PC')
+    id = models.AutoField(primary_key=True, editable=False)
+    nom = models.CharField(max_length = 20, default='NomParDefault')
+    maintenanceDate = models.DateField(default = datetime.now())
+    match= models.CharField(max_length = 32, choices=TYPE, default='PC')
 
 
 
 class Utilisateur(models.Model):
-    id = models.CharField(primary_key=True, editable=True, max_length = 4)
-    nom = models.CharField(max_length = 10)
-    prenom = models.CharField(max_length = 10)
+    id = models.AutoField(primary_key=True, editable=False)
+    nom = models.CharField(max_length = 20)
+    prenom = models.CharField(max_length = 20)
     
-#    def __str__(self):
-#        return str(self.id) + " -> " + self.nom + " " + self.prenom
-#
-#    def get_name(self):
-#        return str(self.id) + " " + self.nom + " " + self.prenom
 
 
+    #def __str__(self):
+    #   return str(self.id) + " -> " + self.nom + " " + self.nom
+    #
+    #def get_name(self):
+    #   return str(self.id) + " " + self.nom + " " + self.nom

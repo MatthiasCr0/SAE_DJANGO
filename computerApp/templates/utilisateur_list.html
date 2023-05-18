@@ -1,18 +1,41 @@
 {% extends "index.html" %}
 {% load static %}
-        {% block content %}
-            <h1>Liste des utilisateurs</h1>
-            {% if utilisateurs %}
-            <ul>
-                {% for utilisateur in utilisateurs %}
-                    <li>
-                        {{ utilisateur.id }}</a> ({{utilisateur.nom}})
-                    </li>
-                {%endfor %}
-            </ul>
-            {% else %}
-                <p>Il n\’y a pas de d'utilisateurs.</p>
-            {% endif %}
-
-        <li><a href="{% url 'add-utilisateur' %}">Ajouter un utilisateur</a></li>
+        {% block title %}
+        <title>Computer Management</title>
         {% endblock %}
+        
+        {% block content %}
+        <!DOCTYPE html>
+        <html lang='fr'>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+        </head>
+        
+        <body>
+            <li><a href="{% url 'add-utilisateur' %}">Ajouter un utilisateur</a></li>
+        
+            {% if utilisateurs %}
+            <form action="{% url 'del-utilisateur' %}" method="post">
+                {% csrf_token %}
+                
+                <ul>
+                    {% for utilisateur in utilisateurs %}
+                    <li>
+                        <input type="checkbox" name="selected_utilisateur" value="{{ utilisateur.id }}">
+                            ID {{ utilisateur.id }} | {{ utilisateur.prenom }} {{ utilisateur.nom }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <button type="submit">Supprimer les utilisateurs sélectionnées</button>
+            </form>
+            {% else %}
+            <p>Il n’y a pas d'utilisateur.</p>
+            {% endif %}
+        </body>
+        
+        </html>
+        {% endblock %}
+        

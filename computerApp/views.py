@@ -5,6 +5,7 @@ from django.shortcuts import get_object_or_404, redirect
 from .forms import  AddMachineForm
 from .forms import AddUtilisateurForm
 from .forms import DelMachineForm
+from .forms import DelUtilisateurForm
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 
@@ -33,9 +34,9 @@ def machine_detail_view(request, pk) :
 
 def machine_add_form(request):
     if request.method == 'POST':
-        form_1 = AddMachineForm(request.POST or None)
-        if form_1.is_valid():
-            new_machine = Machine(nom=form_1.cleaned_data['nom'])
+        form_2 = AddMachineForm(request.POST or None)
+        if form_2.is_valid():
+            new_machine = Machine(nom=form_2.cleaned_data['nom'])
             new_machine.save()
         return redirect('machines')
     else:
@@ -65,7 +66,7 @@ def utilisateur_add_form(request):
         form_2= AddUtilisateurForm(request.POST or None)
         if form_2.is_valid():
             new_utilisateur = Utilisateur(
-                                id=form_2.cleaned_data['id'],
+                                prenom=form_2.cleaned_data['prenom'],
                                 nom=form_2.cleaned_data['nom'])
             new_utilisateur.save()
         return redirect('utilisateurs')
@@ -78,8 +79,8 @@ def utilisateur_add_form(request):
 
 def machine_del_form(request):
     if request.method == 'POST':
-        form_2=DelMachineForm(request.POST or None)
-        if form_2.is_valid():
+        form=DelMachineForm(request.POST or None)
+        if form.is_valid():
             selected_machine = form.cleaned_data['selected_machine']
             Machine.objects.filter(pk__in=selected_machine).delete()
         return redirect('machines')
@@ -87,3 +88,22 @@ def machine_del_form(request):
         form = DelMachineForm()
         context = {'form': form}
         return render(request,'machine_del.html',context)
+    
+
+def utilisateur_del_form(request):
+    if request.method == 'POST':
+        form=DelUtilisateurForm(request.POST or None)
+        if form.is_valid():
+            selected_utilisateur = form.cleaned_data['selected_utilisateur']
+            Utilisateur.objects.filter(pk__in=selected_utilisateur).delete()
+        return redirect('utilisateurs')
+
+
+
+def visualisation_view(request) :
+    machines = Machine.objects.all()
+    utilisateurs = Utilisateur.objects.all()
+    context={'machines':machines,'utilisateurs':utilisateurs}
+    return render(request,
+        'visualisation.html',
+        context)

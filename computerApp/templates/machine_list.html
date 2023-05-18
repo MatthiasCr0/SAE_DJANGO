@@ -1,39 +1,40 @@
 {% extends "index.html" %}
 {% load static %}
+
+{% block title %}
+<title>Computer Management</title>
+{% endblock %}
+
+{% block content %}
 <!DOCTYPE html>
 <html lang='fr'>
-    <head>
-        <head>
-            {% block title %}
-            <title>Computer Management</title>
-            {% endblock %}
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-        </head>
-    </head>
-    <body>
-        {% block content %}
-            <li><a href="{% url 'add-machine' %}">Ajouter une machine</a></li>
-            <button type="submit">Supprimer les données sélectionnées</button>
-            
-            {% if machines %}
-            <form action="{% url 'del-machine' %}" method="post">
-                <ul>
-                    {% csrf_token %}
-                    {% for machine in machines %}
-                    <input type="checkbox" name="selected_machine" value="{{ id.pk }}">
-                    {{ machine.nom }}<br>
-                    {% endfor %}
-                </ul>
-            </form>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <li><a href="{% url 'add-machine' %}">Ajouter une machine</a></li>
+
+    {% if machines %}
+    <form action="{% url 'del-machine' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Supprimer les données sélectionnées</button>
+        <ul>
             {% for machine in machines %}
-                <a href="{% url 'machine-detail' machine.id %}">
-                {{ machine.id }}</a> ({{machine.nom}})
+            <li>
+                <input class="ajout" type="checkbox" name="selected_machine" value="{{ machine.id }}">
+                    N°{{ machine.id }} | {{ machine.nom }}
+                </a>
+            </li>
             {% endfor %}
-            {% else %}
-                <p>Il n\’y a pas de machine.</p>
-            {% endif %}
-        {% endblock %}
-    </body>
+        </ul>
+    </form>
+    {% else %}
+    <p>Il n’y a pas de machine.</p>
+    {% endif %}
+</body>
+
 </html>
+{% endblock %}
