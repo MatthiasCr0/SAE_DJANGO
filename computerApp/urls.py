@@ -1,6 +1,5 @@
 from django.urls import path
 from . import views
-
 urlpatterns = [
     path('',views.index, name='index'),
     path('machines/',views.machine_list_view,name='machines'),
@@ -12,4 +11,9 @@ urlpatterns = [
     path('del-machines/',views.machine_del_form, name='del-machine'),
     path('del-utilisateurs/',views.utilisateur_del_form, name='del-utilisateur'),
     path('visualisation/',views.visualisation_view,name='visualisation'),
+    path('contact/submit/', views.contact_submit, name='contact-submit'),
+    path('contact/success/', views.contact_success, name='contact-success'),
+    path('contact/messages/', views.contact_messages, name='view-contact-messages'),
+    path('contact/del-messages/', views.del_contact_message, name='del-contact-message'),
+    
 ]

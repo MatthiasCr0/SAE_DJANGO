@@ -8,32 +8,37 @@
 {% block content %}
 <!DOCTYPE html>
 <html lang='fr'>
+
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
-    <li><a href="{% url 'add-machine' %}">Ajouter une machine</a></li>
+  <nav>
+    <ul>
+      <li><a href="{% url 'add-machine' %}">Ajouter une machine</a></li>
+    </ul>
+  </nav>
 
-    {% if machines %}
-    <form action="{% url 'del-machine' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Supprimer les données sélectionnées</button>
-        <ul>
-            {% for machine in machines %}
-            <li>
-                <input class="ajout" type="checkbox" name="selected_machine" value="{{ machine.id }}">
-                    N°{{ machine.id }} | {{ machine.nom }}
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-    </form>
-    {% else %}
-    <p>Il n’y a pas de machine.</p>
-    {% endif %}
+  {% if machines %}
+  <form action="{% url 'del-machine' %}" method="post">
+    {% csrf_token %}
+    <ul>
+      {% for machine in machines %}
+      <li>
+        <input class="ajout" type="checkbox" name="selected_machine" value="{{ machine.id }}">
+        N°{{ machine.id }} | {{ machine.nom }}
+        <a href="{% url 'machine-detail' machine.id %}">Détails</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <button type="submit">Supprimer les machines sélectionnées</button>
+  </form>
+  {% else %}
+  <p>Il n’y a pas de machine.</p>
+  {% endif %}
 </body>
 
 </html>

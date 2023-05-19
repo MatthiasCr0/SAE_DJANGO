@@ -1,28 +1,13 @@
 {% extends "index.html" %}
-{% load static %}
-<!DOCTYPE html>
-<html lang='fr'>
-    <head>
-        <head>
-            {% block title %}
-            <title>Computer Management</title>
-            {% endblock %}
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            
-            <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-        </head>
-    </head>
-    <body>
+{% block content %}
 
 
-        {% block content %}
-            <h1>Nom:{{utilisateurs.name}}</h1>
-            <p><strong>Id</strong>:{{utilisateurs.id}}</a></p>
-            <p><strong>Nom:
-            </strong>{{utilisateurs.nom}}</p>
-            <p><strong>Prénom:
-            </strong>{{utilisateurs.prenom}}</p>
-        {% endblock %}
-    </body>
-</html>
+ID : {{utilisateur.id}} <br>
+Nom : {{utilisateur.nom}}
+{{utilisateur.prenom}} <br>
+Secteur : {{utilisateur.secteur}} <br>
+
+
+
+
+{% endblock %}

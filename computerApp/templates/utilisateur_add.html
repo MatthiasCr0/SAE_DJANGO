@@ -15,8 +15,12 @@
         {% block content %}
         <form method="post">
         {% csrf_token %}
+        <label for="prenom">Prénom :</label>
         {{ form.prenom }}
+        <label for="nom">Nom :</label>
         {{ form.nom }}
+        <label for="secteur">Secteur :</label>
+        {{ form.secteur }}
         <input type="submit" value="Ajouter">
         </form>
         {% endblock %}

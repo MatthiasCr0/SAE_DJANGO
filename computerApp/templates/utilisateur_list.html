@@ -1,41 +1,48 @@
 {% extends "index.html" %}
 {% load static %}
-        {% block title %}
-        <title>Computer Management</title>
-        {% endblock %}
-        
-        {% block content %}
-        <!DOCTYPE html>
-        <html lang='fr'>
-        <head>
-            <meta charset="utf-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-        </head>
-        
-        <body>
-            <li><a href="{% url 'add-utilisateur' %}">Ajouter un utilisateur</a></li>
-        
-            {% if utilisateurs %}
-            <form action="{% url 'del-utilisateur' %}" method="post">
-                {% csrf_token %}
-                
-                <ul>
-                    {% for utilisateur in utilisateurs %}
-                    <li>
-                        <input type="checkbox" name="selected_utilisateur" value="{{ utilisateur.id }}">
-                            ID {{ utilisateur.id }} | {{ utilisateur.prenom }} {{ utilisateur.nom }}
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-                <button type="submit">Supprimer les utilisateurs sélectionnées</button>
-            </form>
-            {% else %}
-            <p>Il n’y a pas d'utilisateur.</p>
-            {% endif %}
-        </body>
-        
-        </html>
-        {% endblock %}
+
+{% block title %}
+<title>Computer Management</title>
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang='fr'>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="{% url 'add-utilisateur' %}">Ajouter un utilisateur</a></li>
+    </ul>
+  </nav>
+
+  {% if utilisateurs %}
+  <form action="{% url 'del-utilisateur' %}" method="post">
+    {% csrf_token %}
+
+    <ul>
+      {% for utilisateur in utilisateurs %}
+      <li>
+        <input type="checkbox" name="selected_utilisateur" value="{{ utilisateur.id }}">
+        ID {{ utilisateur.id }} | {{ utilisateur.prenom }} {{ utilisateur.nom }}
+        <a href="{% url 'utilisateur-detail' utilisateur.id %}">Détails</a>
+      </li>
+      {% endfor %}
+    </ul>
+    <button type="submit">Supprimer les utilisateurs sélectionnés</button>
+  </form>
+  {% else %}
+  <p>Il n’y a pas d'utilisateur.</p>
+  {% endif %}
+</body>
+
+</html>
+{% endblock %}
+
         

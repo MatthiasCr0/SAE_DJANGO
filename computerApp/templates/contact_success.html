@@ -1,0 +1,14 @@
+{% extends "index.html" %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirmation de contact</title>
+</head>
+<body>
+    <h1>Merci pour votre message !</h1>
+    <p>Nous vous répondrons bientôt.</p>
+    <button><a href="{% url 'index' %}">Revenir à l'accueil</a></button>
+</body>
+</html>
+{% endblock %}

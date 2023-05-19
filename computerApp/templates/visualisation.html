@@ -1,34 +1,43 @@
 {% extends "index.html" %}
+
 {% block title %}
 <title>Computer Management</title>
 {% endblock %}
 
 {% block content %}
 
-<h1>Page de visualistaion</h1>
+<h1>Page de visualisation</h1>
 
 <h2>Utilisateurs</h2>
 
 {% if utilisateurs %}
+<ul>
     {% for utilisateur in utilisateurs %}
+    <li>
         <a href="{% url 'utilisateur-detail' utilisateur.id %}">
-        ID {{ utilisateur.id }} | {{ utilisateur.prenom }} {{ utilisateur.nom }} (voir plus)<br>
+            ID {{ utilisateur.id }} | {{ utilisateur.prenom }} {{ utilisateur.nom }} (voir plus)
+        </a>
+    </li>
     {% endfor %}
-
+</ul>
 {% else %}
-<p>Il n’y a pas d'utilisateur.</p>
+<p>Il n'y a pas d'utilisateur.</p>
 {% endif %}
 
-<h2>Machine</h2>
+<h2>Machines</h2>
 
 {% if machines %}
+<ul>
     {% for machine in machines %}
+    <li>
         <a href="{% url 'machine-detail' machine.id %}">
-        N°{{ machine.id }} | {{ machine.nom }} (voir plus)<br>
+            N°{{ machine.id }} | {{ machine.nom }} (voir plus)
+        </a>
+    </li>
     {% endfor %}
-
+</ul>
 {% else %}
-<p>Il n’y a pas de machine.</p>
+<p>Il n'y a pas de machine.</p>
 {% endif %}
 
 {% endblock %}

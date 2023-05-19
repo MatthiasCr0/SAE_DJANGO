@@ -692,10 +692,6 @@ select {
   position: static;
 }
 
-.absolute {
-  position: absolute;
-}
-
 .block {
   display: block;
 }
@@ -745,7 +741,7 @@ li a{
 }
 
 .pages a:hover{
-  color: rgb(119, 119, 119);
+  color: rgb(114, 114, 114);
 
 }
 
@@ -760,5 +756,5 @@ li a{
 }
 
 .options a:hover{
-  color: rgb(121, 121, 121);
+  color: rgb(122, 122, 122);
 }

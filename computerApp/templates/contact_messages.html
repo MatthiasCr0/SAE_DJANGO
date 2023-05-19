@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% block content %}
+    <h1>Messages de contact</h1>
+    {% if messages %}
+    <form action="{% url 'del-contact-message' %}" method="post">
+        {% csrf_token %}
+        
+        {% for message in messages %}
+            <input class="ajout" type="checkbox" name="selected_contact_message" value="{{ message.id }}">
+            <strong>Nom:</strong> {{ message.name }}<br>
+            <strong>Email:</strong> {{ message.email }}<br>
+            <strong>Message:</strong> {{ message.message }}<br>
+            <strong>Date:</strong> {{ message.created_at }}<br>
+        {% endfor %}
+        
+        <button type="submit">Supprimer les messages sélectionnés</button>
+    </form>
+    {% else %}
+        <p>Aucun message de contact.</p>
+    {% endif %}
+    <button><a href="{% url 'index' %}">Revenir à l'accueil</a></button>
+{% endblock %}

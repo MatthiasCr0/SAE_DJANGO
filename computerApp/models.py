@@ -10,22 +10,43 @@ class Machine(models.Model):
         ('Serveur', ('Serveur - Simple Server to deploy virtual machines')),
         ('switch', ('Switch - To maintains and connect servers')),
     )
+
+    VLAN = (
+        ('Gestion',('77')),
+        ('Clients',('10')),
+        ('Services',('20')),
+    )
+
     id = models.AutoField(primary_key=True, editable=False)
     nom = models.CharField(max_length = 20, default='NomParDefault')
-    maintenanceDate = models.DateField(default = datetime.now())
-    match= models.CharField(max_length = 32, choices=TYPE, default='PC')
+    maintenanceDate = models.DateTimeField(auto_now_add=True)
+    mach = models.CharField(max_length = 32, choices=TYPE, default='PC')
+    ip = models.CharField(max_length = 32, default='127.0.0.1')
+    vlan = models.CharField(max_length= 32, choices=VLAN, default='Gestion')
 
 
 
 class Utilisateur(models.Model):
+
+    SECT = (
+        ('Gestion',('77')),
+        ('Clients',('10')),
+        ('Services',('20')),
+    )
+
+
     id = models.AutoField(primary_key=True, editable=False)
     nom = models.CharField(max_length = 20)
     prenom = models.CharField(max_length = 20)
+    secteur = models.CharField(max_length= 32, choices=SECT, default='Gestion')
     
 
 
-    #def __str__(self):
-    #   return str(self.id) + " -> " + self.nom + " " + self.nom
-    #
-    #def get_name(self):
-    #   return str(self.id) + " " + self.nom + " " + self.nom
+class ContactMessage(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name

@@ -17,6 +17,9 @@ from django.contrib import admin
 from django.urls import include, path
 from theme.views import change_theme
 
+
+
+
 urlpatterns = [
     path('computerApp/', include('computerApp.urls')),
     path("admin/", admin.site.urls),
