@@ -1,4 +1,6 @@
 from django.urls import path
+
+
 from . import views
 urlpatterns = [
     path('',views.index, name='index'),
@@ -15,5 +17,8 @@ urlpatterns = [
     path('contact/success/', views.contact_success, name='contact-success'),
     path('contact/messages/', views.contact_messages, name='view-contact-messages'),
     path('contact/del-messages/', views.del_contact_message, name='del-contact-message'),
-    
+
+
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
 ]

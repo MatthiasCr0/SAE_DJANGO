@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from theme.views import change_theme
-
+from django.contrib.auth.views import LoginView
 
 
 

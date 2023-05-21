@@ -4,10 +4,12 @@ from computerApp.models import Machine, Utilisateur
 from django.shortcuts import get_object_or_404, redirect, render
 from .forms import  AddMachineForm, AddUtilisateurForm, DelMachineForm, DelUtilisateurForm, DelContactMessageForm, ContactForm
 from .models import ContactMessage
-from django.contrib.auth import authenticate, login
+
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import logout
+from django.contrib.auth import login, logout
+
+
 
 
 #@login_required
@@ -17,6 +19,7 @@ def index(request) :
     return render(request, 'index.html', context)
 
 
+@login_required
 def machine_list_view(request) :
     machines = Machine.objects.all()
     context={'machines':machines}
@@ -25,7 +28,7 @@ def machine_list_view(request) :
         context)
 
 
-
+@login_required
 def machine_detail_view(request, pk) :
     machine = get_object_or_404 (Machine, id=pk)
     context={'machine':machine}
@@ -33,7 +36,7 @@ def machine_detail_view(request, pk) :
         'machine_detail.html',
         context)
 
-
+@login_required
 def machine_add_form(request):
     if request.method == 'POST':
         form_2 = AddMachineForm(request.POST or None)
@@ -49,6 +52,7 @@ def machine_add_form(request):
         return render(request,'machine_add.html',context)
 
 
+@login_required
 def utilisateur_list_view(request) :
     utilisateurs = Utilisateur.objects.all()
     context={'utilisateurs':utilisateurs}
@@ -57,7 +61,7 @@ def utilisateur_list_view(request) :
         context)
 
 
-
+@login_required
 def utilisateur_detail_view(request, pf) :
     utilisateur = get_object_or_404 (Utilisateur, id=pf)
     context={'utilisateur':utilisateur}
@@ -65,7 +69,7 @@ def utilisateur_detail_view(request, pf) :
         'utilisateur_detail.html',
         context)
 
-
+@login_required
 def utilisateur_add_form(request):
     if request.method == 'POST':
         form_2= AddUtilisateurForm(request.POST or None)
@@ -82,7 +86,7 @@ def utilisateur_add_form(request):
         return render(request,'utilisateur_add.html',context)
 
 
-
+@login_required
 def machine_del_form(request):
     if request.method == 'POST':
         form=DelMachineForm(request.POST or None)
@@ -92,7 +96,7 @@ def machine_del_form(request):
         return redirect('machines')
 
     
-
+@login_required
 def utilisateur_del_form(request):
     if request.method == 'POST':
         form=DelUtilisateurForm(request.POST or None)
@@ -132,12 +136,12 @@ def contact_submit(request):
 def contact_success(request):
     return render(request, 'contact_success.html')
 
-
+@login_required
 def contact_messages(request):
     messages = ContactMessage.objects.all()
     return render(request, 'contact_messages.html', {'messages': messages})
 
-
+@login_required
 def del_contact_message(request):
     if request.method == 'POST':
         form=DelContactMessageForm(request.POST or None)
@@ -148,3 +152,21 @@ def del_contact_message(request):
     
 
 
+
+
+
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('index')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('index')
