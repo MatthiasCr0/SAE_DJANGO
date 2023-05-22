@@ -8,6 +8,8 @@
     box-sizing: border-box;
 }
 
+
+
 .navi{
     display: flex;
     justify-content: space-between;
@@ -20,7 +22,7 @@
     margin-left: 10%;
 }
 
- li a{
+li a{
     padding: 30px;
     color: inherit;
     text-decoration-line: none;
@@ -55,4 +57,16 @@
     margin-top: 10%;
     margin-bottom: 2%;
     font-size: 2rem;
+}
+
+
+
+.bg-gray-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
+}
+
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }

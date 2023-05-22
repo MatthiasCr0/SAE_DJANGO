@@ -1,11 +1,29 @@
-{% extends "machine_list.html" %}
+{% extends "index.html" %}
+{% load static %}
+
 {% block content %}
-<form method="post">
-{% csrf_token %}
-<label for="nom">Nom :</label>
-{{ form.nom }}
-<label for="ip">IP :</label>
-{{ form.ip }}
-<input type="submit" value="Ajouter">
-</form>
+<div class="flex justify-center items-center h-screen">
+    <div class="w-full max-w-md">
+        <div class="bg-white shadow rounded-lg p-6">
+            <h2 class="text-2xl font-bold mb-4 text-center">Ajouter une machine</h2>
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label class="block text-gray-700" for="nom">Nom :</label>
+                    {{ form.nom }}
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700" for="ip">IP :</label>
+                    {{ form.ip }}
+                </div>
+                <div class="flex justify-between">
+                    <a href="{% url 'machines' %}" class="text-blue-500 hover:text-blue-600">Retour</a>
+                    <button type="submit" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">
+                        Ajouter
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
