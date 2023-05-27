@@ -5,10 +5,13 @@
 <head>
     <title>Confirmation de contact</title>
 </head>
-<body>
-    <h1>Merci pour votre message !</h1>
-    <p>Nous vous répondrons bientôt.</p>
-    <button><a href="{% url 'index' %}">Revenir à l'accueil</a></button>
+<body class="flex justify-center items-center h-screen">
+    <div class="text-center mx-auto">
+        <h1 class="text-4xl mb-4 mt-20">Merci pour votre message !</h1>
+        <p class="text-xl">Nous vous répondrons bientôt.</p><br>
+        <div class="flex justify-center mt-4">
+            <button class="px-4 py-2 bg-emerald-500 text-white font-semibold rounded hover:bg-emerald-500"><a  href="{% url 'index' %}">Accueil</a></button>
+        </div>  
 </body>
 </html>
 {% endblock %}

@@ -19,7 +19,7 @@
 
 <body class="bg-gray-100">
   <div class="container mx-auto mt-8 px-4">
-    <div class="bg-white rounded-lg shadow-lg p-6">
+    <div class="bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-600">
       <div class="flex justify-center mb-4">
         <h2 class="text-xl font-bold">Gestion des machines</h2>
       </div>
@@ -29,14 +29,14 @@
         <ul class="space-y-4">
           {% for machine in machines %}
           <li class="flex items-center">
-            <input class="mr-2" type="checkbox" name="selected_machine" value="{{ machine.id }}">
+            <input class="mr-2" type="checkbox" name="selected_machine" value="{{ machine.id }}" class="mr-2 form-checkbox text-emerald-500 border-black bg-emerald-500">
             <span class="font-bold">N°{{ machine.id }} </span>| {{ machine.nom }}
-            <a href="{% url 'machine-detail' machine.id %}" class="ml-4 text-blue-500 hover:text-blue-700">Détails</a>
+            <a href="{% url 'machine-detail' machine.id %}" class="ml-4 text-emerald-500 hover:text-emerald-700 duration-300">Détails</a>
           </li>
           {% endfor %}
         </ul>
         <div class="mt-4 flex justify-end">
-          <button type="submit" class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded">Supprimer les machines sélectionnées</button>
+          <button type="submit" class="bg-zinc-800 hover:bg-zinc-950 duration-300 text-white py-2 px-4 rounded">Supprimer les machines sélectionnées</button>
         </div>
       </form>
       {% else %}
@@ -44,12 +44,12 @@
       {% endif %}
       
       <div class="flex justify-end mt-4">
-        <a href="{% url 'add-machine' %}" class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2">Ajouter une machine</a>
+        <a href="{% url 'add-machine' %}" class="bg-emerald-500 hover:bg-emerald-700 duration-300 text-white py-2 px-4 rounded mr-2">Ajouter une machine</a>
       </div>
     </div>
   </div>
   <div class="flex justify-center mt-4">
-    <button class="text-blue-500 hover:text-blue-600"><a  href="{% url 'index' %}">Accueil</a></button>
+    <button class="text-emerald-500 hover:text-emerald-700 duration-300"><a  href="{% url 'index' %}">Accueil</a></button>
   </div>
 </body>
 

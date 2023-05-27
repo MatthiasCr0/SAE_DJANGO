@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+{% block content %}
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold text-center mb-8">Bienvenue sur la page de présentation de R&T Development !</h1>
+        <p class="text-lg text-gray-700 dark:text-slate-100 mb-4 text-justify">R&T Development est une société de développement informatique spécialisée dans le domaine des réseaux embarqués pour le spatial. En tant que nouvelle recrue au poste de technicien réseau, vous ferez désormais partie de notre équipe dynamique et en pleine croissance.</p>
+        <p class="text-lg text-gray-700 mb-4 dark:text-slate-100 text-justify">Notre entreprise est une PME locale qui compte une vingtaine d'employés passionnés par les technologies de pointe et l'innovation. Nous sommes fiers de fournir des services de haute qualité dans le domaine du réseau embarqué, contribuant ainsi aux avancées spatiales et à l'exploration de l'univers.</p>
+        <p class="text-lg text-gray-700 mb-4 dark:text-slate-100 text-justify">Comme toute entreprise en expansion, nous sommes confrontés à de nouveaux besoins sur le plan informatique. Pour répondre à ces défis, nous avons décidé de renforcer notre équipe DSI (Direction des Systèmes Informatisés), en particulier dans le domaine des infrastructures. C'est ici que vous intervenez en tant que membre clé de ce projet d'informatisation.</p>
+        <p class="text-lg text-gray-700 mb-4 dark:text-slate-100 text-justify">Votre mission consistera à mener à bien le projet d'informatisation de la DSI, en travaillant en étroite collaboration avec l'équipe existante. Ensemble, nous visons à améliorer nos capacités informatiques afin de répondre de manière plus efficace et précise aux demandes des utilisateurs internes. Votre expertise en matière de technologie réseau sera essentielle pour concevoir et mettre en œuvre les infrastructures nécessaires à notre croissance continue.</p>
+        <p class="text-lg text-gray-700 mb-4 dark:text-slate-100 text-justify">Chez R&T Development, nous sommes convaincus que chaque employé est un atout précieux. Nous favorisons un environnement de travail collaboratif où les idées sont encouragées, les compétences sont développées et l'innovation est valorisée. Nous croyons en l'épanouissement professionnel de nos employés et nous nous engageons à vous offrir des opportunités de formation et de développement pour soutenir votre progression de carrière.</p>
+        <p class="text-lg text-gray-700 mb-4 dark:text-slate-100 text-justify">Nous sommes impatients de travailler avec vous pour atteindre nos objectifs communs. Bienvenue dans l'équipe de R&T Development, où l'avenir est plein de possibilités passionnantes dans le domaine de la technologie spatiale et de l'informatique.</p>
+        <p class="text-lg text-gray-700 mb-4 dark:text-slate-100 text-justify">Si vous avez des questions ou des préoccupations, n'hésitez pas à les partager avec notre équipe. Ensemble, nous construirons un avenir brillant et prospère pour R&T Development.</p>
+        <p class="text-lg text-gray-700 mb-4 dark:text-slate-100 text-justify">Bienvenue à bord !</p>
+        <p class="text-lg text-gray-700 dark:text-slate-100 text-justify">L'équipe de R&T Development</p>
+        <div class="flex justify-center">
+            <button><a href="{% url 'contact-submit' %}" class="px-4 py-2 bg-emerald-500 text-white font-semibold rounded hover:bg-emerald-700 duration-300">Contact</a></button>
+        </div>
+    </div>
+</body>
+{% endblock %}

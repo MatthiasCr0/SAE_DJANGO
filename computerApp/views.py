@@ -2,12 +2,14 @@ from django.shortcuts import render
 from computerApp.models import Machine, Utilisateur
 
 from django.shortcuts import get_object_or_404, redirect, render
-from .forms import  AddMachineForm, AddUtilisateurForm, DelMachineForm, DelUtilisateurForm, DelContactMessageForm, ContactForm
+from .forms import  AddMachineForm, AddUtilisateurForm, DelMachineForm, DelUtilisateurForm, DelContactMessageForm, ContactForm, EditMachineForm
 from .models import ContactMessage
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login, logout
+
+from django.utils import timezone
 
 
 
@@ -106,12 +108,12 @@ def utilisateur_del_form(request):
         return redirect('utilisateurs')
 
 
-def visualisation_view(request) :
+def presentation_view(request) :
     machines = Machine.objects.all()
     utilisateurs = Utilisateur.objects.all()
     context={'machines':machines,'utilisateurs':utilisateurs}
     return render(request,
-        'visualisation.html',
+        'presentation.html',
         context)
 
 
@@ -150,6 +152,33 @@ def del_contact_message(request):
             ContactMessage.objects.filter(pk__in=selected_contact_message).delete()
         return redirect('view-contact-messages')
     
+
+
+
+@login_required
+def machine_edit(request, pk):
+    machine = get_object_or_404(Machine, id=pk)
+    if request.method == 'POST':
+        form=EditMachineForm(request.POST or None)
+        if form.is_valid():
+            machine.nom = request.POST['nom']
+            machine.ip = request.POST['ip']
+            machine.vlan = request.POST['vlan']
+            machine.maj = request.POST['maj']
+            machine.user = request.POST['user']
+            machine.save()
+        return redirect('machines')
+    else:
+        form = EditMachineForm()
+        context = {'form': form}
+        return render(request,'machine_edit.html',context)
+
+
+
+
+
+
+
 
 
 

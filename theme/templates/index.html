@@ -13,23 +13,22 @@
     <body class="bg-gray-50 dark:bg-neutral-800 text-black dark:text-gray-50">
         {% block menu %}
         <header>
-            <nav class="flex justify-between items-center p-4 bg-gray-100 dark:bg-gray-900">
-                <a class="text-xl text-gray-800 dark:text-white font-bold" href="#">R&T Development</a>
+            <nav class="flex justify-between items-center p-4 bg-gray-100 dark:bg-neutral-700">
+                <a class="text-xl text-emerald-500 dark:text-emerald-500 font-bold" href="{% url 'index' %}">R&T Development</a>
                 <ul class="flex space-x-4">
-                    <li><a href="{% url 'index' %}" class="text-gray-800 dark:text-white hover:text-gray-600">Acceuil</a></li>
-                    <li><a href="{% url 'visualisation' %}" class="text-gray-800 dark:text-white hover:text-gray-600">Visualisation</a></li>
-                    <li><a href="{% url 'utilisateurs' %}" class="text-gray-800 dark:text-white hover:text-gray-600">Utilisateurs</a></li>
-                    <li><a href="{% url 'machines' %}" class="text-gray-800 dark:text-white hover:text-gray-600">Machines</a></li>
+                    <li><a href="{% url 'index' %}" class="text-gray-800 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-500">Acceuil</a></li>
+                    <li><a href="{% url 'presentation' %}" class="text-gray-800 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-500">Présentation</a></li>
+                    <li><a href="{% url 'utilisateurs' %}" class="text-gray-800 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-500">Utilisateurs</a></li>
+                    <li><a href="{% url 'machines' %}" class="text-gray-800 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-500">Machines</a></li>
                 </ul>
                 <ul class="flex space-x-4">
-                    <li><a href="{% url 'change-theme' %}" class="text-gray-800 dark:text-white hover:text-gray-600 bouton_mode">Mode</a></li>
+                    <li><a href="{% url 'change-theme' %}" class="text-gray-800 dark:text-white hover:text-emerald-500 bouton_mode dark:hover:text-emerald-500">Mode</a></li>
                     {% if user.is_authenticated %}
-                        <li><a href="{% url 'logout' %}" class="text-gray-800 dark:text-white hover:text-gray-600">Déconnexion</a></li>
+                        <li><a href="{% url 'logout' %}" class="text-gray-800 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-500">Déconnexion</a></li>
                     {% else %}
-                        <li><a href="{% url 'login' %}" class="text-gray-800 dark:text-white hover:text-gray-600">Connexion</a></li>
+                        <li><a href="{% url 'login' %}" class="text-gray-800 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-500">Connexion</a></li>
                     {% endif %}
-                    <li><a class="text-gray-800 dark:text-white hover:text-gray-600">Compte</a></li>
-                    <li><a class="text-gray-800 dark:text-white hover:text-gray-600">Menu</a></li>
+                    <li><a href="{% url 'contact-submit' %}" class="text-gray-800 dark:text-white hover:text-emerald-500 dark:hover:text-emerald-500">Contact</a></li>
                 </ul>
             </nav>
         </header>
@@ -40,18 +39,21 @@
 
         {% block content %}
         <section class="flex justify-center items-center h-screen">
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8">
-                <div class="mb-4">
-                    <img src="{% static 'computerApp/images/logo.png' %}" alt="logo" class="w-64">
+            <div class="max-w-3xl rounded-lg shadow-lg p-36 bg-slate-100 dark:bg-neutral-700">
+                <div class="mb-6 text-center">
+                    <img src="{% static 'computerApp/images/logo.png' %}" alt="logo" class="w-72 mx-auto">
+                    <h1 class="text-3xl font-bold mt-4">Bienvenue sur notre site</h1>
                 </div>
-                <div class="mb-4">
-                    <h2 class="text-2xl font-bold">Description de l'entreprise</h2>
+                <div class="mb-6">
+                    <p class="text-center text-gray-700">Découvrez notre entreprise et ce que nous avons à offrir.</p>
                 </div>
-                <div>
-                    <a href="#" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Bouton</a>
+                <div class="flex justify-center">
+                    <button><a href="{% url 'presentation' %}" class="px-4 py-2 bg-emerald-500 text-white font-semibold rounded hover:bg-emerald-700 duration-300">En savoir plus</a></button>
                 </div>
             </div>
         </section>
         {% endblock %}
+        
+        
     </body>     
 </html>

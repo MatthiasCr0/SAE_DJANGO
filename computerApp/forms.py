@@ -21,7 +21,51 @@ class AddMachineForm(forms.Form) :
             raise ValidationError("Erreur de format pour le champ ip")
         return data
 
+
+
+
+class EditMachineForm(forms.Form) :
+
+    nom = forms.CharField(required=True, label="Nom de la machine")
+    ip = forms.CharField(required=True, label="IP de la machine")
+    vlan = forms.CharField(required=True, label="Vlan de la machine")
+    maj = forms.CharField(required=True, label="Nom du modificateur")
+    user = forms.CharField(required=True, label="Utilisateur de la machine")
+
+
+
+    def clean_nom(self):
+        data = self.cleaned_data["nom"]
+        if len(data) >20 :
+            raise ValidationError("Erreur de format pour le champ nom")
+        return data
     
+    def clean_ip(self):
+        data = self.cleaned_data["ip"]
+        if len(data) >32 :
+            raise ValidationError("Erreur de format pour le champ ip")
+        return data
+
+    def clean_vlan(self):
+        data = self.cleaned_data["vlan"]
+        if len(data) >32 :
+            raise ValidationError("Erreur de format pour le champ vlan")
+        return data
+    
+    def clean_maj(self):
+        data = self.cleaned_data["maj"]
+        if len(data) >32 :
+            raise ValidationError("Erreur de format pour le champ maj")
+        return data
+
+    def clean_user(self):
+        data = self.cleaned_data["user"]
+        if len(data) >20 :
+            raise ValidationError("Erreur de format pour le champ user")
+        return data
+
+
+
 
 class AddUtilisateurForm(forms.Form) :
 
@@ -53,6 +97,10 @@ class DelMachineForm(forms.Form):
         queryset=Machine.objects.all(),
         widget=forms.CheckboxSelectMultiple()
     )
+
+
+
+
 
 
 class DelUtilisateurForm(forms.Form):

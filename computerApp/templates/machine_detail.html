@@ -3,18 +3,23 @@
 
 <div class="container mx-auto py-8">
   <h2 class="text-2xl font-bold mb-4">Détails de la machine</h2>
-  <div class="bg-white shadow-md rounded-lg p-6">
+  <div class="bg-white shadow-md rounded-lg p-6 dark:bg-neutral-600">
     <p class="mb-4"><strong>Nom :</strong> {{machine.nom}}</p>
     <p class="mb-4"><strong>Numéro :</strong> {{machine.id}}</p>
     <p class="mb-4"><strong>Dernière date de maintenance :</strong> {{machine.maintenanceDate}}</p>
     <p class="mb-4"><strong>Machine :</strong> {{machine.mach}}</p>
     <p class="mb-4"><strong>IP :</strong> {{machine.ip}}</p>
     <p class="mb-4"><strong>VLAN </strong> {{machine.vlan}}</p>
+    <p class="mb-4"><strong>Modifiée par : </strong> {{machine.maj}}</p>
+    <p class="mb-4"><strong>Machine de : </strong> {{machine.user}}</p>
+  </div>
+  <div class="flex justify-end mt-4">
+    <a href="{% url 'machine-edit' machine.id %}" class="bg-emerald-500 hover:bg-emerald-700 duration-300 text-white py-2 px-4 rounded mr-2">Modifier</a>
   </div>
 </div>
 
 <div class="flex justify-center mt-4">
-    <button class="text-blue-500 hover:text-blue-600"><a  href="{% url 'machines' %}">Retour</a></button>
+    <button class="text-emerald-500 hover:text-emerald-700 duration-300"><a  href="{% url 'machines' %}">Retour</a></button>
 </div>
 
 {% endblock %}
