@@ -5,31 +5,27 @@
 <div class="flex justify-center items-center h-screen">
     <div class="w-full max-w-md">
         <div class="bg-white shadow rounded-lg p-6 dark:bg-neutral-600">
-            <h2 class="text-2xl font-bold mb-4 text-center">Modifier la machine</h2>
+            <h2 class="text-2xl font-bold mb-4 text-center">Modifier l'utilisateur</h2>
             <form method="post">
                 {% csrf_token %}
                 <div class="mb-4">
-                    <label class="block text-gray-700" for="nom">Nom :</label>
+                    <label class="block text-gray-700 dark:text-white" for="nom">Nom :</label>
                     {{ form.nom }}
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700" for="ip">IP :</label>
-                    {{ form.ip }}
+                    <label class="block text-gray-700 dark:text-white" for="ip">Prénom :</label>
+                    {{ form.prenom }}
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700" for="Vlan">Vlan</label>
-                    {{ form.vlan }}
+                    <label class="block text-gray-700 dark:text-white" for="Vlan">Secteur :</label>
+                    {{ form.secteur }}
                 </div>
                 <div class="mb-4">
-                    <label class="block text-gray-700" for="Nom de l'utilisateur modifant la machine">Nom de l'utilisateur modifant la machine</label>
-                    {{ form.maj }}
-                </div>
-                <div class="mb-4">
-                    <label class="block text-gray-700" for="Machine de :">Machine de :</label>
-                    {{ form.user }}
+                    <label class="block text-gray-700 dark:text-white" for="Nom de l'utilisateur modifant la machine">Nom de l'utilisateur modifant l'utilisateur :</label>
+                    {{ form.majU }}
                 </div>
                 <div class="flex justify-between">
-                    <a href="{% url 'machines' %}" class="text-emerald-500 hover:text-emerald-700 duration-300">Retour</a>
+                    <a href="{% url 'utilisateurs' %}" class="text-emerald-500 hover:text-emerald-700 duration-300">Retour</a>
                     <button type="submit" class="px-4 py-2 bg-emerald-500 text-white font-semibold rounded hover:bg-emerald-700 duration-300">
                         Modifier
                     </button>

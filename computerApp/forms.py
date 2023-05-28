@@ -137,6 +137,48 @@ class ContactForm(forms.Form):
 
 
 
+
+class EditUtilisateurForm(forms.Form) :
+
+    nom = forms.CharField(required=True, label="Nom de l'utilisateur")
+    prenom = forms.CharField(required=True, label="Prénom de l'utilisateur")
+    secteur = forms.CharField(required=True, label="Secteur de l'utilisateur")
+    majU = forms.CharField(required=True, label="Nom du modificateur")
+
+
+
+
+    def clean_nom(self):
+        data = self.cleaned_data["nom"]
+        if len(data) >20 :
+            raise ValidationError("Erreur de format pour le champ nom")
+        return data
+    
+    def clean_prenom(self):
+        data = self.cleaned_data["prenom"]
+        if len(data) >32 :
+            raise ValidationError("Erreur de format pour le champ prenom")
+        return data
+
+    def clean_secteur(self):
+        data = self.cleaned_data["secteur"]
+        if len(data) >32 :
+            raise ValidationError("Erreur de format pour le champ secteur")
+        return data
+    
+    def clean_majU(self):
+        data = self.cleaned_data["majU"]
+        if len(data) >32 :
+            raise ValidationError("Erreur de format pour le champ majU")
+        return data
+
+
+
+
+
+
+
+
 class DelContactMessageForm(forms.Form):
     selected_contact_message = forms.ModelMultipleChoiceField(
         queryset=ContactMessage.objects.all(),

@@ -17,6 +17,7 @@ urlpatterns = [
     path('contact/messages/', views.contact_messages, name='view-contact-messages'),
     path('contact/del-messages/', views.del_contact_message, name='del-contact-message'),
     path('machines/<pk>/edit/', views.machine_edit, name='machine-edit'),
+    path('utilisateurs/<pf>/edit/', views.utilisateur_edit, name='utilisateur-edit'),
 
 
     path('login/', views.login_view, name='login'),

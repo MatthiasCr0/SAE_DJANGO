@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 
 {% block content %}
-    <div class="flex flex-col justify-center items-center h-screen mt-8 mb-8">
+    <div class="flex flex-col justify-center items-center h-screen">
         <h2 class="text-3xl font-bold mb-6">Gestion des messages</h2>
         <div class="w-full sm:w-2/3 lg:w-1/2 overflow-y-auto">
             {% if messages %}
@@ -20,10 +20,10 @@
                         </div>
                     {% endfor %}
                     
-                    <button type="submit" class="bg-zinc-800 hover:bg-zinc-900 duration-300 text-white font-bold py-2 px-4 rounded mt-4">Supprimer les messages sélectionnés</button>
+                    <button type="submit" class="bg-zinc-800 hover:bg-zinc-950 dark:bg-zinc-500 dark:hover:bg-zinc-700 duration-300 text-white py-2 px-4 rounded">Supprimer les messages sélectionnées</button>
                 </form>
             {% else %}
-                <p class="text-gray-700">Aucun message de contact.</p>
+                <p class="text-gray-900 dark:text-white">Aucun message de contact.</p>
             {% endif %}
             
             <button class="mt-4">

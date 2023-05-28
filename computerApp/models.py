@@ -49,7 +49,9 @@ class Utilisateur(models.Model):
     nom = models.CharField(max_length = 20)
     prenom = models.CharField(max_length = 20)
     secteur = models.CharField(max_length= 32, choices=SECT, default='Gestion')
-    
+    majU = models.CharField(max_length= 32, default='Jamais modifié')
+
+
 
 
 class ContactMessage(models.Model):

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from computerApp.models import Machine, Utilisateur
 
 from django.shortcuts import get_object_or_404, redirect, render
-from .forms import  AddMachineForm, AddUtilisateurForm, DelMachineForm, DelUtilisateurForm, DelContactMessageForm, ContactForm, EditMachineForm
+from .forms import  AddMachineForm, AddUtilisateurForm, DelMachineForm, DelUtilisateurForm, DelContactMessageForm, ContactForm, EditMachineForm, EditUtilisateurForm
 from .models import ContactMessage
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
@@ -176,6 +176,22 @@ def machine_edit(request, pk):
 
 
 
+@login_required
+def utilisateur_edit(request, pf):
+    utilisateur = get_object_or_404(Utilisateur, id=pf)
+    if request.method == 'POST':
+        form=EditUtilisateurForm(request.POST or None)
+        if form.is_valid():
+            utilisateur.nom = request.POST['nom']
+            utilisateur.prenom = request.POST['prenom']
+            utilisateur.secteur = request.POST['secteur']
+            utilisateur.majU = request.POST['majU']
+            utilisateur.save()
+        return redirect('utilisateurs')
+    else:
+        form = EditUtilisateurForm()
+        context = {'form': form}
+        return render(request,'utilisateur_edit.html',context)
 
 
 

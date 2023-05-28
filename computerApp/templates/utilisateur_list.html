@@ -11,10 +11,11 @@
         {% csrf_token %}
         <ul class="space-y-4">
           {% for utilisateur in utilisateurs %}
-          <li class="flex items-center">
-            <input class="mr-2" type="checkbox" name="selected_machine" value="{{ utilisateur.id }}" class="mr-2 form-checkbox text-emerald-500 border-black bg-emerald-500">
-            <span class="font-bold">ID {{ utilisateur.id }} | </span> {{ utilisateur.prenom }} {{ utilisateur.nom }}
-            <a href="{% url 'utilisateur-detail' utilisateur.id %}" class="ml-4 text-emerald-500 hover:text-emerald-700 duration-300">Détails</a>
+          <li class="flex items-center bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-600">
+            <input class="mr-2" type="checkbox" name="selected_utilisateur" value="{{ utilisateur.id }}" class="mr-2 form-checkbox text-emerald-500 border-black bg-emerald-500">
+            <span class="font-bold text-xl">ID {{ utilisateur.id }}</span> 
+            <p class="text-xl">{{ utilisateur.prenom }} {{ utilisateur.nom }}</p>
+            <a href="{% url 'utilisateur-detail' utilisateur.id %}" class="ml-auto text-emerald-500 hover:text-emerald-700 duration-300">Détails</a>
           </li>
           {% endfor %}
         </ul>
@@ -23,7 +24,7 @@
         </div>
       </form>
       {% else %}
-      <p class="mt-8 text-center text-gray-500">Il n'y a pas d'utilisateur.</p>
+      <p class="mt-8 text-center text-gray-500 dark:text-white">Il n'y a pas d'utilisateur.</p>
       {% endif %}
       
       <div class="flex justify-end mt-4">

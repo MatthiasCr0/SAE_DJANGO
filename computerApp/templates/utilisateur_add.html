@@ -8,15 +8,15 @@
             <form method="post">
                 {% csrf_token %}
                 <div class="mb-4">
-                    <label class="block text-white" for="nom">Prénom :</label>
+                    <label class="block dark:text-white" for="nom">Prénom :</label>
                     {{ form.prenom }}
                 </div>
                 <div class="mb-4">
-                    <label class="block text-white" for="ip">Nom :</label>
+                    <label class="block dark:text-white" for="ip">Nom :</label>
                     {{ form.nom }}
                 </div>
                 <div class="mb-4">
-                    <label class="block text-white" for="secteur">Secteur :</label>
+                    <label class="block dark:text-white" for="secteur">Secteur :</label>
                     {{ form.secteur }}
                 </div>
                 <div class="flex justify-between">

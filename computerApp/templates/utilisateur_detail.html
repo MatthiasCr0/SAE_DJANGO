@@ -8,6 +8,11 @@
     <p class="mb-4"><strong>Nom:</strong> {{ utilisateur.nom }}</p>
     <p class="mb-4"><strong>Prénom:</strong> {{ utilisateur.prenom }}</p>
     <p class="mb-4"><strong>Secteur:</strong> {{ utilisateur.secteur }}</p>
+    <p class="mb-4"><strong>Modifié par :</strong> {{ utilisateur.majU }}</p>
+    
+    <div class="flex justify-end mt-4">
+      <a href="{% url 'utilisateur-edit' utilisateur.id %}" class="bg-emerald-500 hover:bg-emerald-700 duration-300 text-white py-2 px-4 rounded mr-2">Modifier</a>
+    </div>
   </div>
 </div>
 

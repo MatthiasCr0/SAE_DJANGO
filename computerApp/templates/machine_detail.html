@@ -12,9 +12,9 @@
     <p class="mb-4"><strong>VLAN </strong> {{machine.vlan}}</p>
     <p class="mb-4"><strong>Modifiée par : </strong> {{machine.maj}}</p>
     <p class="mb-4"><strong>Machine de : </strong> {{machine.user}}</p>
-  </div>
-  <div class="flex justify-end mt-4">
-    <a href="{% url 'machine-edit' machine.id %}" class="bg-emerald-500 hover:bg-emerald-700 duration-300 text-white py-2 px-4 rounded mr-2">Modifier</a>
+    <div class="flex justify-end mt-4">
+      <a href="{% url 'machine-edit' machine.id %}" class="bg-emerald-500 hover:bg-emerald-700 duration-300 text-white py-2 px-4 rounded mr-2">Modifier</a>
+    </div>
   </div>
 </div>
 
